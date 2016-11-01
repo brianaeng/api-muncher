@@ -4,6 +4,9 @@ This shall show a paged list of recipes for a given search term, ten at a time
 This view shall show the name of the recipe and the corresponding photo
 The view shall have a link from the recipe to a recipe show view -->
 
+<h1>Search Results</h1>
+
+<% results.each do |recipe_hash| %>
 
 {
   "q": "tomato",
@@ -14,12 +17,6 @@ The view shall have a link from the recipe to a recipe show view -->
     "q": [
       "tomato"
     ],
-    "app_id": [
-      "f2d0de05"
-    ],
-    "app_key": [
-      "0ee7cd84c740a46f2719bec6c8cb4457"
-    ]
   },
   "more": true,
   "count": 1000,
