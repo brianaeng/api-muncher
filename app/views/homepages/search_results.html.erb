@@ -6,11 +6,17 @@ The view shall have a link from the recipe to a recipe show view -->
 
 <h1 class="center-this">Search Results</h1>
 
-<% @results.each do |recipe| %>
-  <div class="recipe-result">
-      <%= image_tag recipe.image %>
-      <%= link_to recipe.name, show_path(recipe_name: recipe.name, recipe_link: recipe.link, recipe_image: recipe.image, recipe_ingredients: recipe.ingredients, recipe_dietary_info: recipe.dietary_info) %>
-  </div>
+<% if @results == [] %>
+  <p>
+    No results found.
+  </p>
+<% else %>
+  <% @results.each do |recipe| %>
+    <div class="recipe-result">
+        <%= image_tag recipe.image %>
+        <%= link_to recipe.name, show_path(recipe_name: recipe.name, recipe_link: recipe.link, recipe_image: recipe.image, recipe_ingredients: recipe.ingredients, recipe_dietary_info: recipe.dietary_info) %>
+    </div>
+  <% end %>
 <% end %>
 
 <!-- ATTEMPT TO PAGINATE WITH HIDDEN FORM TO PASS HASH TO NEXT RESULTS PAGE -->

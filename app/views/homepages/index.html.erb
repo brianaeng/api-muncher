@@ -17,8 +17,8 @@ Display the results in a list to the user -->
 
   <section class="past-searches">
     <% if !session[:searches].empty? %>
-      <h3>Previous Searches</h3>
-        <% session[:searches].each do |search| %>
+      <h3>Recent Searches</h3>
+        <% session[:searches][-6..-1].reverse.each do |search| %>
           <p><%= link_to search, results_path(1, search_term: search) %></p>
         <% end %>
     <% end %>

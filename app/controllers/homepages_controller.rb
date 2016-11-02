@@ -15,7 +15,7 @@ class HomepagesController < ApplicationController
     if params[:num_pages] != nil
       @num_pages = params[:num_pages].to_i
     else
-      @total_results = Edamam_Api_Wrapper.find_recipes(params[:search_term])
+      @total_results = EdamamApiWrapper.find_recipes(params[:search_term])
 
       @num_pages = @total_results.length/10
     end
@@ -23,7 +23,7 @@ class HomepagesController < ApplicationController
     @from_value = (params[:page_num].to_i * 10) - 10
     @to_value = params[:page_num].to_i * 10
 
-    @results = Edamam_Api_Wrapper.find_recipes(params[:search_term], @from_value, @to_value)
+    @results = EdamamApiWrapper.find_recipes(params[:search_term], @from_value, @to_value)
 
     if !session[:searches].include? params[:search_term]
       session[:searches].push(params[:search_term])
