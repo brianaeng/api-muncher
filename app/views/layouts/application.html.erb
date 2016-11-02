@@ -1,22 +1,27 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Recipe Search</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-  <header>
-    <nav>
-      <%= link_to "Home", root_path %>
-    </nav>
-  </header>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<%= yield %>
+    <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <%= link_to "Home", root_path %>
+      </nav>
+    </header>
+
+    <%= yield %>
 
   <footer>
     <p>Powered By <a href="https://www.edamam.com/">Edamam</a></p>
   </footer>
-</body>
+  </body>
 </html>

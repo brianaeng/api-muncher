@@ -1,38 +1,33 @@
 require "#{Rails.root}/lib/edamam_api_wrapper.rb"
 require "#{Rails.root}/lib/recipe.rb"
-require 'will_paginate/array'
-
 
 class HomepagesController < ApplicationController
 
   def index
+    if session[:searches] != nil
+      return session[:searches]
+    else
+      session[:searches] = []
+    end
   end
 
   def search_results
-    @results = Edamam_Api_Wrapper.find_recipes(params[:search_term]).paginate(:page => params[:page], per_page: 10)
+    if params[:num_pages] != nil
+      @num_pages = params[:num_pages].to_i
+    else
+      @total_results = Edamam_Api_Wrapper.find_recipes(params[:search_term])
 
-    # Attempt to save results via session but the hash was too big (even when JSON?) to store
-    # if session[:search_results] != nil
-    #   @pages = JSON.parse(session[:search_results])
-    #   @num_pages = @pages.length
-    # else
-    #   @results = Edamam_Api_Wrapper.find_recipes(params[:search_term])
-    #
-    #   @num_pages = @results.length/10
-    #   max_num = 10
-    #   page_num = 1
-    #
-    #   @pages = {}
-    #
-    #   @num_pages.times do
-    #     @page_results = @results[0..max_num]
-    #     @pages["#{page_num}"] = @page_results
-    #     max_num += 10
-    #     page_num += 1
-    #   end
-    #
-    #   session[:search_results] = @pages.to_json
-    # end
+      @num_pages = @total_results.length/10
+    end
+
+    @from_value = (params[:page_num].to_i * 10) - 10
+    @to_value = params[:page_num].to_i * 10
+
+    @results = Edamam_Api_Wrapper.find_recipes(params[:search_term], @from_value, @to_value)
+
+    if !session[:searches].include? params[:search_term]
+      session[:searches].push(params[:search_term])
+    end
   end
 
   def show

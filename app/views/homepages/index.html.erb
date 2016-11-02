@@ -4,10 +4,23 @@ The user shall type in a search term that will:
 Make a request to the API using the search term
 Display the results in a list to the user -->
 
-<h1>Search For A Recipe!</h1>
+<article class="center-this">
+  <h1>Search For A Recipe!</h1>
 
-<%= form_tag results_path, method: :get do %>
-  <%= text_field_tag :search_term, nil, placeholder: "Enter search term(s)" %>
+  <section class="search-form">
+    <%= form_tag results_path(1), method: :get do %>
+      <%= text_field_tag :search_term, nil, placeholder: "Enter search term(s)" %>
 
-  <%= submit_tag "Search!", class: "button" %>
-<% end %>
+        <%= submit_tag "Search!", class: "button" %>
+    <% end %>
+  </section>
+
+  <section class="past-searches">
+    <% if !session[:searches].empty? %>
+      <h3>Previous Searches</h3>
+        <% session[:searches].each do |search| %>
+          <p><%= link_to search, results_path(1, search_term: search) %></p>
+        <% end %>
+    <% end %>
+  </section>
+</article>
