@@ -5,4 +5,39 @@ class RecipeTest < ActionController::TestCase
   test "the truth" do
     assert true
   end
+
+  test "a recipe without a name cannot be created" do
+    assert_raise ArgumentError do
+      Recipe.new(nil, "link", "image", "ingredients", "dietary_info")
+    end
+  end
+
+  test "a recipe without a link cannot be created" do
+    assert_raise ArgumentError do
+      Recipe.new("name", nil, "image", "ingredients", "dietary_info")
+    end
+  end
+
+  test "a recipe without an image cannot be created" do
+    assert_raise ArgumentError do
+      Recipe.new("name", "link", nil, "ingredients", "dietary_info")
+    end
+  end
+
+  test "a recipe without ingredients cannot be created" do
+    assert_raise ArgumentError do
+      Recipe.new("name", "link", "image", nil, "dietary_info")
+    end
+  end
+
+  test "a recipe without dietary info cannot be created" do
+    assert_raise ArgumentError do
+      Recipe.new("name", "link", "image", "ingredients", nil)
+    end
+  end
+
+  test "a recipe's attribute is correctly set" do
+    test_recipe = Recipe.new("name", "link", "image", "ingredients", "dietary_info")
+    assert_equal test_recipe.name, "name"
+  end
 end

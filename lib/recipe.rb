@@ -8,6 +8,10 @@ class Recipe
     @image = image
     @ingredients = ingredients
     @dietary_info = dietary_info
+
+    if ([name, link, image, ingredients, dietary_info].include? nil) || ([name, link, image, ingredients, dietary_info].include? "")
+      raise ArgumentError
+    end
   end
 
 end
