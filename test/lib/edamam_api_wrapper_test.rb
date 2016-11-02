@@ -22,12 +22,13 @@ class EdamamApiWrapperTest < ActionController::TestCase
     end
   end
 
-  # Need to find a way for the wrapper to take custom id & key
-  # test 'results cannot be retrieved from Edamam with a bad id' do
-  #   VCR.use_cassette("bad id") do
-  #     resonse = EdamamApiWrapper.find_recipes("tomato", 0, 10, 893274, nil)
-  #
-  #     assert_select 'title', "Error 401 - Edamam"
-  #   end
-  # end
+  # Need to get a bad result, get method to take custom key/id
+  test 'results cannot be retrieved from Edamam with a bad id' do
+    VCR.use_cassette("bad id") do
+      response = EdamamApiWrapper.find_recipes("tomato", 0, 10)#, 234234, nil)
+
+      assert_response 401
+    end
+  end
+
 end
