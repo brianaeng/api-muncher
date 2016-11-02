@@ -1,5 +1,9 @@
 source 'https://rubygems.org'
 
+
+# For pagination
+gem 'will_paginate'
+
 # API gem
 gem 'httparty'
 

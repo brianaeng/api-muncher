@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   root to: 'homepages#index'
 
-  # post 'results/' => 'homepages#search_results', as: 'results'
-  post '/results/:page_num' => 'homepages#search_results', as: 'results_pages'
+  get '/results' => 'homepages#search_results', as: 'results'
+  # post '/results/:page_num' => 'homepages#search_results', as: 'results_pages'
   get '/show' => 'homepages#show', as: 'show'
 
   # The priority is based upon order of creation: first created -> highest priority.
