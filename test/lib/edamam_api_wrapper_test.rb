@@ -22,12 +22,27 @@ class EdamamApiWrapperTest < ActionController::TestCase
     end
   end
 
-  # Need to get a bad result, get method to take custom key/id
+  test 'a search with no results from Edamam is empty' do
+    VCR.use_cassette("empty results") do
+      no_recipes = EdamamApiWrapper.find_recipes("sdbfsdnfjksnjfsd", 0, 10)
+
+      assert_equal no_recipes, []
+    end
+  end
+
   test 'results cannot be retrieved from Edamam with a bad id' do
     VCR.use_cassette("bad id") do
-      response = EdamamApiWrapper.find_recipes("tomato", 0, 10)#, 234234, nil)
+      response = EdamamApiWrapper.find_recipes("tomato", 0, 10, 234234, nil)
 
-      assert_response 401
+      assert response.parsed_response.include? ("Error 401")
+    end
+  end
+
+  test 'results cannot be retrieved from Edaman with a bad key' do
+    VCR.use_cassette("bad key") do
+      response = EdamamApiWrapper.find_recipes("tomato", 0, 10, 234234, nil)
+
+      assert response.parsed_response.include? ("Error 401")
     end
   end
 

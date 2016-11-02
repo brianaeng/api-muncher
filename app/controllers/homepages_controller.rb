@@ -25,9 +25,7 @@ class HomepagesController < ApplicationController
 
     @results = EdamamApiWrapper.find_recipes(params[:search_term], @from_value, @to_value)
 
-    if !session[:searches].include? params[:search_term]
-      session[:searches].push(params[:search_term])
-    end
+    session[:searches].push(params[:search_term])
   end
 
   def show
