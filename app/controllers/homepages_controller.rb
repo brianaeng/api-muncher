@@ -43,8 +43,4 @@ class HomepagesController < ApplicationController
     @recipe_dietary_info = params[:recipe_dietary_info]
   end
 
-  private
-  def recipe_params
-    params.permit(:name, :user_id, :price, :quantity, :description, :picture, :active, categories_attributes: [:name], category_ids: [])
-  end
 end
