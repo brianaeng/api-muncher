@@ -15,3 +15,47 @@
  *= require foundation_and_overrides
 
  */
+
+body {
+  width: 75%;
+  margin: 3rem auto;
+}
+
+footer {
+  text-align: center;
+}
+
+a {
+  color: rgb(80, 80, 80);
+}
+
+.search-form {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.center-this {
+  text-align: center;
+}
+
+img {
+  height: 10rem;
+  width: auto;
+}
+
+.recipe-result {
+  margin: 2rem auto;
+}
+
+.recipe-result a {
+  margin: 0 2rem;
+}
+
+.bigger-image img {
+  height: 20rem;
+  width: auto;
+}
+
+.recipe-details {
+  padding: 5rem;
+}

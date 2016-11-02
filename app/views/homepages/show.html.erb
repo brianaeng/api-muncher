@@ -5,17 +5,17 @@ Name
 Link to the original recipe (opens in a new tab)
 Ingredients
 Dietary information -->
+<div class="center-this bigger-image">
+  <%= image_tag @recipe_image %>
+</div>
 
-<h1><%= @recipe_name %></h1>
+<h1 class="center-this"><%= @recipe_name %></h1>
 
-<%= image_tag @recipe_image %>
+<section class="recipe-details">
+  <h5>Original Recipe:</h5>
+  <p><%= link_to @recipe_name, @recipe_link, :target => '_blank' %></p>
 
-<p>
-  Original Recipe: <%= link_to @recipe_name, @recipe_link, :target => '_blank' %>
-</p>
-
-<p>
-  Ingredients:
+  <h5>Ingredients:</h5>
   <ul>
     <% @recipe_ingredients.each do |ingredient| %>
       <li>
@@ -23,10 +23,8 @@ Dietary information -->
       </li>
     <% end %>
   </ul>
-</p>
 
-<p>
-  Dietary Information:
+  <h5>Dietary Information:</h5>
   <ul>
     <% @recipe_dietary_info.each do |info_item| %>
       <li>
@@ -34,4 +32,5 @@ Dietary information -->
       </li>
     <% end %>
   </ul>
-</p>
+
+</section>

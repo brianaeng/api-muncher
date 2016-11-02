@@ -4,6 +4,11 @@ require "#{Rails.root}/lib/recipe.rb"
 class HomepagesController < ApplicationController
 
   def index
+    if session[:searches] != nil
+      return session[:searches]
+    else
+      session[:searches] = []
+    end
   end
 
   def search_results
@@ -19,6 +24,10 @@ class HomepagesController < ApplicationController
     @to_value = params[:page_num].to_i * 10
 
     @results = Edamam_Api_Wrapper.find_recipes(params[:search_term], @from_value, @to_value)
+
+    if !session[:searches].include? params[:search_term]
+      session[:searches].push(params[:search_term])
+    end
   end
 
   def show
