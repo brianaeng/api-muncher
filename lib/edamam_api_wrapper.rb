@@ -1,3 +1,5 @@
+require 'httparty'
+
 class Edamam_Api_Wrapper
   ID = ENV["APP_ID"]
   KEY = ENV["APP_KEY"]
@@ -12,8 +14,16 @@ class Edamam_Api_Wrapper
     #Using HTTParty to get URL response
     response = HTTParty.get(url)
 
-    #Will return an array of recipe hashes
-    return response["hits"]
-  end
+    recipes = []
 
+    #Will return recipe instances
+    response["hits"].each do |recipe|
+      recipe_instance = Recipe.new(recipe["recipe"]["label"], recipe["recipe"]["url"], recipe["recipe"]["image"], recipe["recipe"]["ingredients"], recipe["recipe"]["healthLabels"])
+
+      recipes.push(recipe_instance)
+    end
+
+    return recipes
+
+  end
 end

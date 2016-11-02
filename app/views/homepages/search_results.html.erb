@@ -4,11 +4,33 @@ This shall show a paged list of recipes for a given search term, ten at a time
 This view shall show the name of the recipe and the corresponding photo
 The view shall have a link from the recipe to a recipe show view -->
 
+<!-- Note to self, use foundation for pages: http://foundation.zurb.com/sites/docs/pagination.html -->
+
+
 <h1>Search Results</h1>
 
-<% results.each do |recipe_hash| %>
+<%# @results.each do |recipe| %>
+  <!-- <div class="recipe-result"> -->
+    <%# link_to recipe.name, show_path(recipe_name: recipe.name, recipe_link: recipe.link, recipe_image: recipe.image, recipe_ingredients: recipe.ingredients, recipe_dietary_info: recipe.dietary_info) %>
+    <%# image_tag recipe.image %>
+  <!-- </div> -->
+<%# end %>
+<%# @pages[params[:page_num].to_i] %>
 
-{
+<!-- Maybe render this as partial? Need a way to pass hash to next page of results... -->
+<% @pages[params[:page_num].to_i].each do |recipe| %>
+  <%= link_to recipe.name, show_path(recipe_name: recipe.name, recipe_link: recipe.link, recipe_image: recipe.image, recipe_ingredients: recipe.ingredients, recipe_dietary_info: recipe.dietary_info) %>
+  <%= image_tag recipe.image %>
+<% end %>
+
+<ul class="pagination">
+  <% @num_pages.times do |i| %>
+  <!-- Problem: this can't pass objects to other pages... -->
+  <li><%= link_to i+1, results_pages_path(i+1, results: @pages), method: :post %></li>
+  <% end %>
+</ul>
+
+<!-- {
   "q": "tomato",
   "from": 0,
   "to": 10,
@@ -6092,4 +6114,4 @@ The view shall have a link from the recipe to a recipe show view -->
       "bought": false
     }
   ]
-}
+} -->

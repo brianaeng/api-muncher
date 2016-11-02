@@ -6,5 +6,32 @@ Link to the original recipe (opens in a new tab)
 Ingredients
 Dietary information -->
 
-<h1>Homepages#show</h1>
-<p>Find me in app/views/homepages/show.html.erb</p>
+<h1><%= @recipe_name %></h1>
+
+<%= image_tag @recipe_image %>
+
+<p>
+  Original Recipe: <%= link_to @recipe_name, @recipe_link, :target => '_blank' %>
+</p>
+
+<p>
+  Ingredients:
+  <ul>
+    <% @recipe_ingredients.each do |ingredient| %>
+      <li>
+        <%= ingredient["text"] %>
+      </li>
+    <% end %>
+  </ul>
+</p>
+
+<p>
+  Dietary Information:
+  <ul>
+    <% @recipe_dietary_info.each do |info_item| %>
+      <li>
+        <%= info_item %>
+      </li>
+    <% end %>
+  </ul>
+</p>
