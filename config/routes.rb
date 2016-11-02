@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root to: 'homepages#index'
 
-  get '/results' => 'homepages#search_results', as: 'results'
+  get '/results/:page_num' => 'homepages#search_results', as: 'results'
   # post '/results/:page_num' => 'homepages#search_results', as: 'results_pages'
   get '/show' => 'homepages#show', as: 'show'
 

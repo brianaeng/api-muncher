@@ -6,8 +6,8 @@ Display the results in a list to the user -->
 
 <h1>Search For A Recipe!</h1>
 
-<%= form_tag results_path, method: :get do %>
+<%= form_tag results_path(1), method: :get do %>
   <%= text_field_tag :search_term, nil, placeholder: "Enter search term(s)" %>
 
-  <%= submit_tag "Search!", class: "button" %>
+  <%= submit_tag "Search!", class: "Button" %>
 <% end %>

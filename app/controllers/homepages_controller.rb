@@ -7,8 +7,18 @@ class HomepagesController < ApplicationController
   end
 
   def search_results
-    @results = Edamam_Api_Wrapper.find_recipes(params[:search_term])
+    if params[:num_pages] != nil
+      @num_pages = params[:num_pages].to_i
+    else
+      @total_results = Edamam_Api_Wrapper.find_recipes(params[:search_term])
 
+      @num_pages = @total_results.length/10
+    end
+
+    @from_value = (params[:page_num].to_i * 10) - 10
+    @to_value = params[:page_num].to_i * 10
+
+    @results = Edamam_Api_Wrapper.find_recipes(params[:search_term], @from_value, @to_value)
   end
 
   def show
@@ -18,5 +28,5 @@ class HomepagesController < ApplicationController
     @recipe_ingredients = params[:recipe_ingredients]
     @recipe_dietary_info = params[:recipe_dietary_info]
   end
-  
+
 end

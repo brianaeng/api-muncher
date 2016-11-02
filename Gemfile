@@ -1,17 +1,13 @@
 source 'https://rubygems.org'
 
-
-# For pagination
-gem 'will_paginate'
-
 # API gem
 gem 'httparty'
 
-# Foundation gem
-gem 'foundation-rails'
-
 # Required due to an incompatibility between TurboLinks and Foundation.
 gem 'jquery-turbolinks'
+
+# Foundation gem
+gem 'foundation-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.7'
