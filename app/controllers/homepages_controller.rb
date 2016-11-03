@@ -6,12 +6,12 @@ class HomepagesController < ApplicationController
   def index
     @health_options = ["vegan", "vegetarian", "paleo", "dairy-free", "gluten-free", "wheat-free", "fat-free", "low-sugar", "egg-free", "peanut-free", "tree-nut-free", "soy-free", "fish-free", "shellfish-free"]
 
-    if session[:searches] != nil
-      return session[:searches]
-    else
-      searches = []
-      session[:searches] = searches
-    end
+    # if session[:searches] != nil
+    #   return session[:searches]
+    # else
+    #   searches = []
+    #   session[:searches] = searches
+    # end
   end
 
   def search_results
@@ -31,18 +31,18 @@ class HomepagesController < ApplicationController
 
     @results = EdamamApiWrapper.find_recipes(params[:search_term], params["health_terms"], @from_value, @to_value)
 
-    session[:searches].push(params[:search_term])
+    # session[:searches].push(params[:search_term])
   end
 
   def temp
   end
 
   def show
-    @recipe_name = params[:recipe_name]
-    @recipe_link = params[:recipe_link]
-    @recipe_image = params[:recipe_image]
-    @recipe_ingredients = params[:recipe_ingredients]
-    @recipe_dietary_info = params[:recipe_dietary_info]
+    response = params[:recipe_uri]
+    id = response.split("_")[-1]
+    recipe_uri = "https://api.edamam.com/search?r=http://www.edamam.com/ontologies/edamam.owl%23recipe_" + id
+
+    @recipe = EdamamApiWrapper.get_recipe(recipe_uri)
   end
 
 end

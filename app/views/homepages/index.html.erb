@@ -27,12 +27,12 @@ Display the results in a list to the user -->
     <% end %>
   </section>
 
-  <section class="past-searches">
-    <% if !session[:searches].empty? && session[:searches] != nil %>
+  <!-- <section class="past-searches">
+    <%# if !session[:searches].empty? && session[:searches] != nil %>
       <h3>Recent Searches</h3>
-      <% session[:searches][-6..-1].reverse.each do |search| %>
-        <p><%= link_to search, results_path(1, search_term: search) %></p>
-      <% end %>
-    <% end %>
-  </section>
+      <%# session[:searches][-6..-1].reverse.each do |search| %>
+        <p><%# link_to search, results_path(1, search_term: search) %></p>
+      <%# end %>
+    <%# end %>
+  </section> -->
 </article>

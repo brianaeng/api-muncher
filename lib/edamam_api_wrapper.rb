@@ -34,7 +34,7 @@ class EdamamApiWrapper
       #Will return recipe instances
       if response["count"] > 0
         response["hits"].each do |recipe|
-          recipe_instance = Recipe.new(recipe["recipe"]["label"], recipe["recipe"]["url"], recipe["recipe"]["image"], recipe["recipe"]["ingredients"], recipe["recipe"]["healthLabels"])
+          recipe_instance = Recipe.new(recipe["recipe"]["uri"], recipe["recipe"]["label"], recipe["recipe"]["url"], recipe["recipe"]["image"], recipe["recipe"]["ingredients"], recipe["recipe"]["healthLabels"])
 
           recipes.push(recipe_instance)
         end
@@ -43,6 +43,15 @@ class EdamamApiWrapper
 
     return recipes
 
+  end
+
+  def self.get_recipe(recipe_uri)
+    url = BASE_URL + "?r=#{recipe_uri}"
+    response = HTTParty.get(url)
+
+    recipe_instance = Recipe.new(response[0]["uri"], response[0]["label"], response[0]["url"], response[0]["image"], response[0]["ingredients"], response[0]["healthLabels"])
+
+    return recipe_instance
   end
 
   #Test method to show the url output
