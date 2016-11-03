@@ -4,7 +4,7 @@ class EdamamApiWrapper
   ID = ENV["APP_ID"]
   KEY = ENV["APP_KEY"]
   BASE_URL = "https://api.edamam.com/search"
-  MAX_NUM_RESULTS = 100 #Keeping this as 20 for now since default is only 10, can increase later
+  MAX_NUM_RESULTS = 100
 
   def self.find_recipes(search_term, health_terms = nil, from = 0, to = MAX_NUM_RESULTS, id = nil, key = nil)
     id = ID if id == nil
@@ -54,19 +54,19 @@ class EdamamApiWrapper
     return recipe_instance
   end
 
-  #Test method to show the url output
-  def self.show_url(search_term, health_terms = nil, from = 0, to = MAX_NUM_RESULTS, id = nil, key = nil)
-    id = ID if id == nil
-    key = KEY if key == nil
-
-    health = ""
-
-    health_terms.each do |term|
-      health += "&health=#{term}"
-    end
-
-    url = BASE_URL + "?q=#{search_term}" + health + "&app_id=#{id}&app_key=#{key}" + "&from=#{from}&to=#{to}"
-
-    return url
-  end
+  # #Test method to show the url output
+  # def self.show_url(search_term, health_terms = nil, from = 0, to = MAX_NUM_RESULTS, id = nil, key = nil)
+  #   id = ID if id == nil
+  #   key = KEY if key == nil
+  #
+  #   health = ""
+  #
+  #   health_terms.each do |term|
+  #     health += "&health=#{term}"
+  #   end
+  #
+  #   url = BASE_URL + "?q=#{search_term}" + health + "&app_id=#{id}&app_key=#{key}" + "&from=#{from}&to=#{to}"
+  #
+  #   return url
+  # end
 end

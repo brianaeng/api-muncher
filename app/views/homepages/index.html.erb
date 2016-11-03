@@ -8,7 +8,6 @@ Display the results in a list to the user -->
   <h1>Search For A Recipe!</h1>
 
   <section class="search-form">
-    <!-- change to temp_path if testing params output -->
     <%= form_tag results_path(1), method: :get do %>
       <%= text_field_tag :search_term, nil, placeholder: "Enter search term(s)" %>
 

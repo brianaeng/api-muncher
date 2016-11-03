@@ -6,9 +6,6 @@ The view shall have a link from the recipe to a recipe show view -->
 
 <h1 class="center-this">Search Results</h1>
 
-<!-- Test output to see Edamam url -->
-<%# @url %>
-
 <% if @results == [] %>
   <p>
     No results found.
@@ -23,15 +20,6 @@ The view shall have a link from the recipe to a recipe show view -->
     </div>
   <% end %>
 <% end %>
-
-<!-- ATTEMPT TO PAGINATE WITH HIDDEN FORM TO PASS HASH TO NEXT RESULTS PAGE -->
-<%# results = @pages.to_json %>
-<%# hidden_field_tag "pages", results: results %>
-
-<%# @pages[params[:page_num]].each do |recipe| %>
-  <%# link_to recipe.name, show_path(recipe_name: recipe.name, recipe_link: recipe.link, recipe_image: recipe.image, recipe_ingredients: recipe.ingredients, recipe_dietary_info: recipe.dietary_info) %>
-  <%# image_tag recipe.image %>
-<%# end %>
 
 <ul class="pagination center-this">
   <% @num_pages.times do |i| %>

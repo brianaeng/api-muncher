@@ -26,15 +26,9 @@ class HomepagesController < ApplicationController
     @from_value = (params[:page_num].to_i * 10) - 10
     @to_value = params[:page_num].to_i * 10
 
-    #Just a test method to see what the url
-    # @url = EdamamApiWrapper.show_url(params[:search_term], params["health_terms"], @from_value, @to_value)
-
     @results = EdamamApiWrapper.find_recipes(params[:search_term], params["health_terms"], @from_value, @to_value)
 
     # session[:searches].push(params[:search_term])
-  end
-
-  def temp
   end
 
   def show
