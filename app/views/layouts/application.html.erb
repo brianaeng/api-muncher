@@ -12,6 +12,7 @@
   </head>
 
   <body>
+    <div class="content">
     <header>
       <nav>
         <%= link_to "🍽", root_path %>
@@ -19,8 +20,9 @@
     </header>
 
     <%= yield %>
+    </div>
 
-  <footer>
+  <footer class="footer">
     <p>Powered By <a href="https://www.edamam.com/">Edamam</a></p>
   </footer>
   </body>

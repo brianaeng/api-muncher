@@ -7,16 +7,21 @@ The view shall have a link from the recipe to a recipe show view -->
 <h1 class="center-this">Search Results</h1>
 
 <% if @results == [] %>
-  <p>
-    No results found.
-  </p>
+  <section class="center-this no-results">
+    <p>No results found</p>
+    <p>😐</p>
+  </section>
 <% else %>
+<section class="row small-up-1 medium-up-2 large-up-2">
   <% @results.each do |recipe| %>
-    <div class="recipe-result">
+      <div class="column center-this recipe-result">
         <%= image_tag recipe.image %>
-        <%= link_to recipe.name, show_path(recipe_uri: recipe.uri) %>
-    </div>
+        <p class="text-box">
+          <%= link_to recipe.name, show_path(recipe_uri: recipe.uri) %>
+        </p>
+      </div>
   <% end %>
+</section>
 <% end %>
 
 <ul class="pagination center-this">

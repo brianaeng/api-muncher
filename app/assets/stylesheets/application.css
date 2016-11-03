@@ -17,6 +17,13 @@
  */
 
 /*-- ALL --*/
+.content {
+  min-height: calc(100vh - 110px);
+}
+.footer {
+  height: 50px;
+}
+
 body {
   width: 75%;
   margin: 1rem auto;
@@ -24,6 +31,9 @@ body {
 
 header nav {
   text-align: center;
+  border-bottom: 1px rgb(185, 185, 185) solid;
+  height: 6rem;
+  margin-bottom: 1rem;
 }
 
 header nav a {
@@ -46,7 +56,7 @@ a {
 }
 
 img {
-  height: 10rem;
+  height: 12rem;
   width: auto;
 }
 
@@ -70,7 +80,23 @@ img {
 }
 
 .recipe-result a {
-  margin: 0 2rem;
+  vertical-align: middle;
+  margin: 0 auto;
+}
+
+.text-box {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.text-box a {
+  font-size: 1.1rem;
+}
+
+.no-results {
+  margin: 3rem;
+  color: rgb(172, 67, 67);
+  font-size: 2rem;
 }
 
 /*-- SHOW --*/
