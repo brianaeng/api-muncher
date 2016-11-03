@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+#Google OAuth gem
+gem "omniauth-google-oauth2"
+
 # API gem
 gem 'httparty'
 

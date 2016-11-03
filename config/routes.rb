@@ -1,7 +1,16 @@
 Rails.application.routes.draw do
+
   root to: 'homepages#index'
 
-  # Test route 
+  get 'auth/:provider/callback', to: 'sessions#create', as: 'login'
+  # get 'auth/failure', to: redirect('/')
+  get 'signout', to: 'sessions#destroy', as: 'logout'
+
+  get '/index', to: 'users#index', as: 'user'
+
+  resources :sessions, only: [:create, :destroy]
+
+  # Test route
   # get '/temp' => 'homepages#temp', as: 'temp'
 
   get '/results/:page_num' => 'homepages#search_results', as: 'results'

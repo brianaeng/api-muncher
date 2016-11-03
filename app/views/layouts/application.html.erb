@@ -15,6 +15,13 @@
     <header>
       <nav>
         <%= link_to "Home", root_path %>
+
+        <% if session[:user_id] != nil %>
+          <%= link_to "Profile", user_path %>
+          <%= link_to "Logout", logout_path %>
+        <% else %>
+          <%= link_to "Login", "/auth/google_oauth2" %>
+        <% end %>
       </nav>
     </header>
 
