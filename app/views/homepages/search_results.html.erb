@@ -17,6 +17,7 @@ The view shall have a link from the recipe to a recipe show view -->
   <% @results.each do |recipe| %>
     <div class="recipe-result">
         <%= image_tag recipe.image %>
+        <!-- send recipe object instead of params separately? -->
         <%= link_to recipe.name, show_path(recipe_name: recipe.name, recipe_link: recipe.link, recipe_image: recipe.image, recipe_ingredients: recipe.ingredients, recipe_dietary_info: recipe.dietary_info) %>
     </div>
   <% end %>
