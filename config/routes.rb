@@ -1,9 +1,6 @@
 Rails.application.routes.draw do
   root to: 'homepages#index'
 
-  # Test route 
-  # get '/temp' => 'homepages#temp', as: 'temp'
-
   get '/results/:page_num' => 'homepages#search_results', as: 'results'
 
   get '/show' => 'homepages#show', as: 'show'
