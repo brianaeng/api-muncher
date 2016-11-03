@@ -16,22 +16,29 @@
 
  */
 
+/*-- ALL --*/
 body {
   width: 75%;
-  margin: 3rem auto;
+  margin: 1rem auto;
+}
+
+header nav {
+  text-align: center;
+}
+
+header nav a {
+  font-size: 5rem;
 }
 
 footer {
+  margin-top: auto;
   text-align: center;
+  font-size: .75em;
+  padding: 1em;
 }
 
 a {
   color: rgb(80, 80, 80);
-}
-
-.search-form {
-  width: 70%;
-  margin: 0 auto;
 }
 
 .center-this {
@@ -43,6 +50,21 @@ img {
   width: auto;
 }
 
+/*-- INDEX --*/
+.search-form {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.past-searches {
+  margin: 3rem;
+}
+
+.button {
+  background-color: rgb(71, 173, 58);
+}
+
+/*-- SEARCH RESULTS --*/
 .recipe-result {
   margin: 2rem auto;
 }
@@ -51,6 +73,7 @@ img {
   margin: 0 2rem;
 }
 
+/*-- SHOW --*/
 .bigger-image img {
   height: 20rem;
   width: auto;
