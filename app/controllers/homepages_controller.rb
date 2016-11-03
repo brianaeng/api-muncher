@@ -7,9 +7,10 @@ class HomepagesController < ApplicationController
     @health_options = ["vegan", "vegetarian", "paleo", "dairy-free", "gluten-free", "wheat-free", "fat-free", "low-sugar", "egg-free", "peanut-free", "tree-nut-free", "soy-free", "fish-free", "shellfish-free"]
 
     if session[:searches] != nil
-      session[:searches]
+      return session[:searches]
     else
-      session[:searches] = []
+      searches = []
+      session[:searches] = searches
     end
   end
 
@@ -25,7 +26,7 @@ class HomepagesController < ApplicationController
     @from_value = (params[:page_num].to_i * 10) - 10
     @to_value = params[:page_num].to_i * 10
 
-    #Just a test method to see what the url output is
+    #Just a test method to see what the url
     # @url = EdamamApiWrapper.show_url(params[:search_term], params["health_terms"], @from_value, @to_value)
 
     @results = EdamamApiWrapper.find_recipes(params[:search_term], params["health_terms"], @from_value, @to_value)
