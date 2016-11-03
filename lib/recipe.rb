@@ -1,15 +1,15 @@
 
 class Recipe
-  attr_reader :name, :link, :image, :ingredients, :dietary_info
+  attr_reader :name, :link, :picture_url, :ingredients, :dietary_info
 
-  def initialize(name, link, image, ingredients, dietary_info)
+  def initialize(name, link, picture_url, ingredients, dietary_info)
     @name = name
     @link = link
-    @image = image
+    @picture_url = picture_url
     @ingredients = ingredients
     @dietary_info = dietary_info
 
-    if ([name, link, image, ingredients, dietary_info].include? nil) || ([name, link, image, ingredients, dietary_info].include? "")
+    if ([name, link, picture_url, ingredients, dietary_info].include? nil) || ([name, link, picture_url, ingredients, dietary_info].include? "")
       raise ArgumentError
     end
   end

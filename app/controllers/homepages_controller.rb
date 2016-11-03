@@ -7,12 +7,12 @@ class HomepagesController < ApplicationController
     @health_options = ["vegan", "vegetarian", "paleo", "dairy-free", "gluten-free", "wheat-free", "fat-free", "low-sugar", "egg-free", "peanut-free", "tree-nut-free", "soy-free", "fish-free", "shellfish-free"]
 
     #Update this to make it user-specific
-    # if session[:searches] != nil
-    #   return session[:searches]
-    # else
-    #   searches = []
-    #   session[:searches] = searches
-    # end
+    if session[:searches] != nil
+      return session[:searches]
+    else
+      searches = []
+      session[:searches] = searches
+    end
   end
 
   def search_results
@@ -41,7 +41,7 @@ class HomepagesController < ApplicationController
   def show
     @recipe_name = params[:recipe_name]
     @recipe_link = params[:recipe_link]
-    @recipe_image = params[:recipe_image]
+    @recipe_picture_url = params[:recipe_picture_url]
     @recipe_ingredients = params[:recipe_ingredients]
     @recipe_dietary_info = params[:recipe_dietary_info]
   end

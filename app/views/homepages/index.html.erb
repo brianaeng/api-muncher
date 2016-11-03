@@ -12,16 +12,12 @@ Display the results in a list to the user -->
     <%= form_tag results_path(1), method: :get do %>
       <%= text_field_tag :search_term, nil, placeholder: "Enter search term(s)" %>
 
-      <!-- <ul> -->
         <% @health_options.each do |option| %>
-            <!-- <li> -->
               <p>
                 <%= label_tag option %>
                 <%= check_box_tag 'health_terms[]', option %>
               </p>
-            <!-- </li> -->
         <% end %>
-      <!-- </ul> -->
 
       <%= submit_tag "Search!", class: "button" %>
     <% end %>
