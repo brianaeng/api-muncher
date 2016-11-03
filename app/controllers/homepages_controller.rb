@@ -4,8 +4,10 @@ require "#{Rails.root}/lib/recipe.rb"
 class HomepagesController < ApplicationController
 
   def index
+    @health_options = ["vegan", "vegetarian", "paleo", "dairy-free", "gluten-free", "wheat-free", "fat-free", "low-sugar", "egg-free", "peanut-free", "tree-nut-free", "soy-free", "fish-free", "shellfish-free"]
+
     if session[:searches] != nil
-      return session[:searches]
+      session[:searches]
     else
       session[:searches] = []
     end
@@ -15,7 +17,7 @@ class HomepagesController < ApplicationController
     if params[:num_pages] != nil
       @num_pages = params[:num_pages].to_i
     else
-      @total_results = EdamamApiWrapper.find_recipes(params[:search_term])
+      @total_results = EdamamApiWrapper.find_recipes(params[:search_term], params["health_terms"])
 
       @num_pages = @total_results.length/10
     end
@@ -23,9 +25,15 @@ class HomepagesController < ApplicationController
     @from_value = (params[:page_num].to_i * 10) - 10
     @to_value = params[:page_num].to_i * 10
 
-    @results = EdamamApiWrapper.find_recipes(params[:search_term], @from_value, @to_value)
+    #Just a test method to see what the url output is
+    # @url = EdamamApiWrapper.show_url(params[:search_term], params["health_terms"], @from_value, @to_value)
+
+    @results = EdamamApiWrapper.find_recipes(params[:search_term], params["health_terms"], @from_value, @to_value)
 
     session[:searches].push(params[:search_term])
+  end
+
+  def temp
   end
 
   def show

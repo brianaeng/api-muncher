@@ -6,6 +6,9 @@ The view shall have a link from the recipe to a recipe show view -->
 
 <h1 class="center-this">Search Results</h1>
 
+<!-- Test output to see Edamam url -->
+<%# @url %>
+
 <% if @results == [] %>
   <p>
     No results found.
@@ -30,7 +33,7 @@ The view shall have a link from the recipe to a recipe show view -->
 
 <ul class="pagination center-this">
   <% @num_pages.times do |i| %>
-  <li><%= link_to i+1, results_path(i+1, search_term: params[:search_term], num_pages: @num_pages), method: :get %></li>
+  <li><%= link_to i+1, results_path(i+1, search_term: params[:search_term], "health_terms" => params["health_terms"], num_pages: @num_pages), method: :get %></li>
   <% end %>
 </ul>
 
