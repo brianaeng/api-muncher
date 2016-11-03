@@ -13,6 +13,10 @@ class HomepagesController < ApplicationController
     else
       @searches = session[:searches].reverse
     end
+
+    if params[:commit] != nil
+      search_results
+    end
   end
 
   def search_results

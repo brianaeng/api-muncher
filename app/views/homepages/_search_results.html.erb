@@ -1,0 +1,20 @@
+<h1 class="center-this">Search Results</h1>
+
+<% if @results == [] %>
+  <p>
+    No results found.
+  </p>
+<% else %>
+  <% @results.each do |recipe| %>
+    <div class="recipe-result">
+        <%= image_tag recipe.image %>
+        <%= link_to recipe.name, show_path(recipe_uri: recipe.uri) %>
+    </div>
+  <% end %>
+<% end %>
+
+<ul class="pagination center-this">
+  <% @num_pages.times do |i| %>
+  <li><%= link_to i+1, results_path(i+1, search_term: params[:search_term], "health_terms" => params["health_terms"], num_pages: @num_pages), method: :get %></li>
+  <% end %>
+</ul>
