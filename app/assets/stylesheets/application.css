@@ -27,6 +27,13 @@
 body {
   width: 75%;
   margin: 1rem auto;
+  font-family: serif;
+  font-size: 1.25rem;
+}
+
+h3, h5 {
+  font-family: serif;
+  font-weight: bold;
 }
 
 header nav {
@@ -49,6 +56,12 @@ footer {
 
 a {
   color: rgb(80, 80, 80);
+  font-size: 1.25rem;
+}
+
+a:hover:not(.home) {
+  color: rgb(80, 80, 80);
+  opacity: .7;
 }
 
 .center-this {
@@ -58,6 +71,11 @@ a {
 img:not("edamamlogo.png"){
   height: 12rem;
   width: auto;
+}
+
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-weight: bold;
 }
 
 /*-- INDEX --*/
@@ -70,8 +88,9 @@ img:not("edamamlogo.png"){
   margin: 3rem;
 }
 
-.button {
+.button, .button:hover {
   background-color: rgb(71, 173, 58);
+  font-size: 1.1rem;
 }
 
 /*-- SEARCH RESULTS --*/

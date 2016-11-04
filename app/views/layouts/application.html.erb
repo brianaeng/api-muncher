@@ -9,13 +9,14 @@
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
   </head>
 
   <body>
     <div class="content">
     <header>
       <nav>
-        <%= link_to "🍽", root_path %>
+        <%= link_to "🍽", root_path, class: "home" %>
       </nav>
     </header>
 
