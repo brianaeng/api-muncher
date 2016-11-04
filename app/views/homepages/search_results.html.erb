@@ -15,10 +15,10 @@ The view shall have a link from the recipe to a recipe show view -->
   <section class="results">
       <% @results.each do |recipe| %>
       <div class="row">
-        <div class="small-12 medium-6 large-4 column">
+        <div class="small-12 medium-6 large-5 column center-this">
           <%= image_tag recipe.image %>
         </div>
-        <div class="small-12 medium-6 large-8 column text">
+        <div class="small-12 medium-6 large-7 column text">
           <!-- <p class="text-box"> -->
             <p><%= link_to recipe.name, show_path(recipe_uri: recipe.uri) %></p>
           <!-- </p> -->

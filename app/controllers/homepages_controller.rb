@@ -4,9 +4,11 @@ require "#{Rails.root}/lib/recipe.rb"
 class HomepagesController < ApplicationController
 
   def index
-    @health_options = ["vegan", "vegetarian", "paleo", "dairy-free", "gluten-free", "wheat-free", "fat-free", "low-sugar", "egg-free", "peanut-free", "tree-nut-free", "soy-free", "fish-free", "shellfish-free"]
+    @health_options = ["Vegan", "Vegetarian", "Paleo", "Dairy-Free", "Gluten-Free", "Wheat-Free", "Fat-Free", "Low-Sugar", "Egg-Free", "Peanut-Free", "Tree-Nut-Free", "Soy-Free", "Fish-Free", "Shellfish-Free"]
 
     session[:searches] ||= []
+
+    session[:searches].delete("")
 
     if session[:searches].length > 4
       @searches = session[:searches][-5..-1].reverse
