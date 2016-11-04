@@ -123,14 +123,21 @@ img {
 }
 
 /*-- MEDIA QUERIES --*/
-@media only screen and (min-width: 64.5em) {
-  .text {
-    padding-top: 5rem;
+
+@media only screen and (min-width: 0px) and (max-width: 640px) {
+  .results .row {
+    text-align: center;
   }
 }
 
-@media only screen and (max-width: 64.5em) {
+@media only screen and (min-width: 641px) and (max-width: 1019px) {
   .text {
-    padding-top: 1.5rem;
+    padding-top: 3rem;
+  }
+}
+
+@media only screen and (min-width: 1020px) and (max-width: 1600px) {
+  .text {
+    padding-top: 5rem;
   }
 }
