@@ -29,7 +29,9 @@ class HomepagesController < ApplicationController
 
     @results = EdamamApiWrapper.find_recipes(params[:search_term], params["health_terms"], @from_value, @to_value)
 
-    session[:searches].push(params[:search_term])
+    if session[:searches]
+      session[:searches].push(params[:search_term])
+    end
   end
 
   def show
@@ -37,7 +39,10 @@ class HomepagesController < ApplicationController
     id = response.split("_")[-1]
     recipe_uri = "http://www.edamam.com/ontologies/edamam.owl%23recipe_" + id
 
-    @recipe = EdamamApiWrapper.get_recipe(recipe_uri)
+    response = EdamamApiWrapper.get_recipe(recipe_uri)
+
+    @recipe = Recipe.new(response[0]["uri"], response[0]["label"], response[0]["url"], response[0]["image"], response[0]["ingredients"], response[0]["healthLabels"])
+
   end
 
 end

@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "Munchery" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "Recipe Search" %></title>
 
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
@@ -24,7 +24,7 @@
     </div>
 
   <footer class="footer">
-    <%= image_tag "edamamlogo.png" %>
+    <%= image_tag "edamamlogo.png", class: "logo" %>
   </footer>
   </body>
 </html>
