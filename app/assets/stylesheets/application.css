@@ -55,7 +55,7 @@ a {
   text-align: center;
 }
 
-img {
+img:not("edamamlogo.png"){
   height: 12rem;
   width: auto;
 }
@@ -87,24 +87,6 @@ img {
 .text {
   font-size: 1.1rem;
 }
-
-/*.recipe-result {
-  margin: 2rem auto;
-}
-
-.recipe-result a {
-  vertical-align: middle;
-  margin: 0 auto;
-}
-
-.text-box {
-  width: 70%;
-  margin: 0 auto;
-}
-
-.text-box a {
-  font-size: 1.1rem;
-}*/
 
 .no-results {
   margin: 3rem;
