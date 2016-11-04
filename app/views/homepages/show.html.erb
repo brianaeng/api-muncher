@@ -25,12 +25,12 @@ Dietary information -->
   </ul>
 
   <h5>Dietary Information:</h5>
-  <ul>
     <% @recipe.dietary_info.each do |info_item| %>
-      <li>
-        <%= info_item %>
-      </li>
+      <% if info_item != @recipe.dietary_info[-1] %>
+        <%= "#{info_item}, " %>
+      <% else %>
+        <%= "and #{info_item}" %>
+      <% end %>
     <% end %>
-  </ul>
 
 </section>
