@@ -46,12 +46,13 @@ class EdamamApiWrapper
   end
 
   def self.get_recipe(recipe_uri)
-    url = BASE_URL + "?r=#{recipe_uri}"
+    url = BASE_URL + "?r=#{recipe_uri}" + "&app_id=#{ID}&app_key=#{KEY}"
     response = HTTParty.get(url)
 
     recipe_instance = Recipe.new(response[0]["uri"], response[0]["label"], response[0]["url"], response[0]["image"], response[0]["ingredients"], response[0]["healthLabels"])
 
     return recipe_instance
+
   end
 
   # #Test method to show the url output

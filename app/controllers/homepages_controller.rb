@@ -35,7 +35,7 @@ class HomepagesController < ApplicationController
   def show
     response = params[:recipe_uri]
     id = response.split("_")[-1]
-    recipe_uri = "https://api.edamam.com/search?r=http://www.edamam.com/ontologies/edamam.owl%23recipe_" + id
+    recipe_uri = "http://www.edamam.com/ontologies/edamam.owl%23recipe_" + id
 
     @recipe = EdamamApiWrapper.get_recipe(recipe_uri)
   end

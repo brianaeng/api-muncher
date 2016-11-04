@@ -46,4 +46,18 @@ class EdamamApiWrapperTest < ActionController::TestCase
     end
   end
 
+  test 'a recipe can be retrieved from Edamam with a good uri' do
+    VCR.use_cassette("good recipe") do
+      recipe = EdamamApiWrapper.get_recipe("http://www.edamam.com/ontologies/edamam.owl%23recipe_65adeae2e0b552568de6250bd9f29b81")
+
+      assert recipe.is_a? Recipe
+    end
+  end
+
+  # test 'a recipe cannot be retrieved from Edamam with a bad uri' do
+  #   VCR.use_cassette("bad recipe") do
+  #     response = EdamamApiWrapper.get_recipe("bad uri")
+  #   end
+  # end
+
 end

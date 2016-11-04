@@ -42,6 +42,11 @@ class RecipeTest < ActionController::TestCase
     end
   end
 
+  test "a recipe can successfully be created with all attributes" do
+    test_recipe = Recipe.new("uri", "name", "link", "image", "ingredients", "dietary_info")
+    assert test_recipe
+  end
+
   test "a recipe's attribute is correctly set" do
     test_recipe = Recipe.new("uri", "name", "link", "image", "ingredients", "dietary_info")
     assert_equal test_recipe.name, "name"
