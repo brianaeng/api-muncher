@@ -12,16 +12,20 @@ The view shall have a link from the recipe to a recipe show view -->
     <p>😐</p>
   </section>
 <% else %>
-<section class="row small-up-1 medium-up-2 large-up-2">
-  <% @results.each do |recipe| %>
-      <div class="column center-this recipe-result">
-        <%= image_tag recipe.image %>
-        <p class="text-box">
-          <%= link_to recipe.name, show_path(recipe_uri: recipe.uri) %>
-        </p>
+  <section class="results">
+      <% @results.each do |recipe| %>
+      <div class="row align-middle">
+        <div class="small-12 medium-6 large-4 column">
+          <%= image_tag recipe.image %>
+        </div>
+        <div class="small-12 medium-6 large-8 column text">
+          <!-- <p class="text-box"> -->
+            <span><%= link_to recipe.name, show_path(recipe_uri: recipe.uri) %></span>
+          <!-- </p> -->
+        </div>
       </div>
-  <% end %>
-</section>
+    <% end %>
+  </section>
 <% end %>
 
 <ul class="pagination center-this">
