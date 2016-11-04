@@ -75,7 +75,20 @@ img {
 }
 
 /*-- SEARCH RESULTS --*/
-.recipe-result {
+.results {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.row div {
+  margin: 1rem 0;
+}
+
+.text {
+  font-size: 1.1rem;
+}
+
+/*.recipe-result {
   margin: 2rem auto;
 }
 
@@ -91,7 +104,7 @@ img {
 
 .text-box a {
   font-size: 1.1rem;
-}
+}*/
 
 .no-results {
   margin: 3rem;
@@ -107,4 +120,24 @@ img {
 
 .recipe-details {
   padding: 5rem;
+}
+
+/*-- MEDIA QUERIES --*/
+
+@media only screen and (min-width: 0px) and (max-width: 640px) {
+  .results .row {
+    text-align: center;
+  }
+}
+
+@media only screen and (min-width: 641px) and (max-width: 1019px) {
+  .text {
+    padding-top: 3rem;
+  }
+}
+
+@media only screen and (min-width: 1020px) and (max-width: 1600px) {
+  .text {
+    padding-top: 5rem;
+  }
 }
