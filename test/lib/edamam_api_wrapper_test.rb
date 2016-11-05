@@ -41,7 +41,7 @@ class EdamamApiWrapperTest < ActionController::TestCase
 
   test 'results cannot be retrieved from Edaman with a bad key' do
     VCR.use_cassette("bad key") do
-      response = EdamamApiWrapper.find_recipes("tomato", nil, 0, 10, 234234, nil)
+      response = EdamamApiWrapper.find_recipes("tomato", nil, 0, 10, nil, 234234)
       assert_equal response.code, 401
       # assert response.parsed_response.include? ("Error 401")
     end
@@ -60,7 +60,7 @@ class EdamamApiWrapperTest < ActionController::TestCase
     VCR.use_cassette("bad recipe") do
       recipe = EdamamApiWrapper.get_recipe("bad uri")
 
-      assert recipe.body == "["
+      assert_equal recipe.body, "["
     end
   end
 
