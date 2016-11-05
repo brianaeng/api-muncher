@@ -4,14 +4,16 @@ require "#{Rails.root}/lib/recipe.rb"
 class HomepagesController < ApplicationController
 
   def index
-    @health_options = ["vegan", "vegetarian", "paleo", "dairy-free", "gluten-free", "wheat-free", "fat-free", "low-sugar", "egg-free", "peanut-free", "tree-nut-free", "soy-free", "fish-free", "shellfish-free"]
+    @health_options = ["Vegan", "Vegetarian", "Paleo", "Dairy-Free", "Gluten-Free", "Wheat-Free", "Fat-Free", "Low-Sugar", "Egg-Free", "Peanut-Free", "Tree-Nut-Free", "Soy-Free", "Fish-Free", "Shellfish-Free"]
 
-    #Update this to make it user-specific
-    if session[:searches] != nil
-      return session[:searches]
+    session[:searches] ||= []
+
+    session[:searches].delete("")
+
+    if session[:searches].length > 4
+      @searches = session[:searches][-5..-1].reverse
     else
-      searches = []
-      session[:searches] = searches
+      @searches = session[:searches].reverse
     end
   end
 
@@ -27,23 +29,21 @@ class HomepagesController < ApplicationController
     @from_value = (params[:page_num].to_i * 10) - 10
     @to_value = params[:page_num].to_i * 10
 
-    #Just a test method to see what the url
-    # @url = EdamamApiWrapper.show_url(params[:search_term], params["health_terms"], @from_value, @to_value)
-
     @results = EdamamApiWrapper.find_recipes(params[:search_term], params["health_terms"], @from_value, @to_value)
 
-    # session[:searches].push(params[:search_term])
-  end
-
-  def temp
+    if session[:searches]
+      session[:searches].push(params[:search_term])
+    end
   end
 
   def show
-    @recipe_name = params[:recipe_name]
-    @recipe_link = params[:recipe_link]
-    @recipe_picture_url = params[:recipe_picture_url]
-    @recipe_ingredients = params[:recipe_ingredients]
-    @recipe_dietary_info = params[:recipe_dietary_info]
+    response = params[:recipe_uri]
+    id = response.split("_")[-1]
+    recipe_uri = "http://www.edamam.com/ontologies/edamam.owl%23recipe_" + id
+
+    response = EdamamApiWrapper.get_recipe(recipe_uri)
+
+    @recipe = Recipe.new(response[0]["uri"], response[0]["label"], response[0]["url"], response[0]["image"], response[0]["ingredients"], response[0]["healthLabels"])
   end
 
 end

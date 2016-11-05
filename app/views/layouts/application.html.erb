@@ -4,31 +4,33 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><%= content_for?(:title) ? yield(:title) : "Munchery" %></title>
+    <title><%= content_for?(:title) ? yield(:title) : "Omnomnom" %></title>
 
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
   </head>
 
   <body>
+    <div class="content">
     <header>
       <nav>
-        <%= link_to "Home", root_path %>
-
         <% if session[:user_id] != nil %>
           <%= link_to "Profile", user_path %>
           <%= link_to "Logout", logout_path %>
         <% else %>
           <%= link_to "Login", "/auth/google_oauth2" %>
         <% end %>
+        <%= link_to "🍽", root_path, class: "home" %>
       </nav>
     </header>
 
     <%= yield %>
+    </div>
 
-  <footer>
-    <p>Powered By <a href="https://www.edamam.com/">Edamam</a></p>
+  <footer class="footer">
+    <%= image_tag "edamamlogo.png", class: "logo" %>
   </footer>
   </body>
 </html>

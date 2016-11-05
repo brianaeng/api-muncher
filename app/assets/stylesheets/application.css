@@ -16,41 +16,113 @@
 
  */
 
+/*-- ALL --*/
+.content {
+  min-height: calc(100vh - 110px);
+}
+.footer {
+  height: 50px;
+}
+
+html, body {
+  background-color: rgb(255, 255, 255);
+}
+
 body {
   width: 75%;
-  margin: 3rem auto;
+  margin: .5rem auto;
+  font-family: serif;
+  font-size: 1.25rem;
+}
+
+h3, h5 {
+  font-family: serif;
+  font-weight: bold;
+}
+
+header nav {
+  text-align: center;
+  border-bottom: 1px rgb(185, 185, 185) solid;
+  height: 6rem;
+  margin-bottom: 1rem;
+}
+
+header nav a {
+  font-size: 5rem;
 }
 
 footer {
+  margin-top: auto;
   text-align: center;
+  font-size: .75em;
+  padding: 1em;
 }
 
 a {
   color: rgb(80, 80, 80);
+  font-size: 1.25rem;
 }
 
-.search-form {
-  width: 70%;
-  margin: 0 auto;
+a:hover:not(.home) {
+  color: rgb(80, 80, 80);
+  opacity: .7;
 }
 
 .center-this {
   text-align: center;
 }
 
-img {
-  height: 10rem;
+img:not(.logo){
+  height: 12rem;
   width: auto;
 }
 
-.recipe-result {
-  margin: 2rem auto;
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-weight: bold;
 }
 
-.recipe-result a {
-  margin: 0 2rem;
+/*-- INDEX --*/
+.search-form {
+  width: 70%;
+  margin: 0 auto;
 }
 
+.past-searches {
+  margin: 3rem;
+}
+
+.button, .button:hover {
+  background-color: rgb(71, 173, 58);
+  font-size: 1.1rem;
+}
+
+/*-- SEARCH RESULTS --*/
+.results {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.row div {
+  margin: 1rem 0;
+}
+
+.text a {
+  font-size: 1.25rem;
+}
+
+.no-results {
+  margin: 3rem;
+  color: rgb(172, 67, 67);
+  font-size: 2rem;
+}
+
+ul.pagination li {
+   font-size: .5rem;
+   display: inline-block;
+ }
+
+/*-- SHOW --*/
 .bigger-image img {
   height: 20rem;
   width: auto;
@@ -58,4 +130,24 @@ img {
 
 .recipe-details {
   padding: 5rem;
+}
+
+/*-- MEDIA QUERIES --*/
+
+@media only screen and (min-width: 0px) and (max-width: 640px) {
+  .results .row {
+    text-align: center;
+  }
+}
+
+@media only screen and (min-width: 641px) and (max-width: 1019px) {
+  .text {
+    padding-top: 3rem;
+  }
+}
+
+@media only screen and (min-width: 1020px) and (max-width: 1600px) {
+  .text {
+    padding-top: 5rem;
+  }
 }

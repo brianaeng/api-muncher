@@ -16,15 +16,16 @@ class EdamamApiWrapperTest < ActionController::TestCase
 
   test 'a group of 10 results can be retrieved from Edamam' do
     VCR.use_cassette("ten recipes") do
-      ten_recipes = EdamamApiWrapper.find_recipes("tomato", 0, 10)
+      ten_recipes = EdamamApiWrapper.find_recipes("tomato", nil, 0, 10)
 
       assert_equal ten_recipes.length, 10
+      assert ten_recipes[0].is_a? Recipe
     end
   end
 
   test 'a search with no results from Edamam is empty' do
     VCR.use_cassette("empty results") do
-      no_recipes = EdamamApiWrapper.find_recipes("sdbfsdnfjksnjfsd", 0, 10)
+      no_recipes = EdamamApiWrapper.find_recipes("sdbfsdnfjksnjfsd", nil, 0, 10)
 
       assert_equal no_recipes, []
     end
@@ -32,17 +33,34 @@ class EdamamApiWrapperTest < ActionController::TestCase
 
   test 'results cannot be retrieved from Edamam with a bad id' do
     VCR.use_cassette("bad id") do
-      response = EdamamApiWrapper.find_recipes("tomato", 0, 10, 234234, nil)
-
-      assert response.parsed_response.include? ("Error 401")
+      response = EdamamApiWrapper.find_recipes("tomato", nil, 0, 10, 234234, nil)
+      assert_equal response.code, 401
+      # assert response.parsed_response.include? ("Error 401")
     end
   end
 
   test 'results cannot be retrieved from Edaman with a bad key' do
     VCR.use_cassette("bad key") do
-      response = EdamamApiWrapper.find_recipes("tomato", 0, 10, 234234, nil)
+      response = EdamamApiWrapper.find_recipes("tomato", nil, 0, 10, nil, 234234)
+      assert_equal response.code, 401
+      # assert response.parsed_response.include? ("Error 401")
+    end
+  end
 
-      assert response.parsed_response.include? ("Error 401")
+  test 'a recipe can be retrieved from Edamam with a good uri' do
+    VCR.use_cassette("good recipe") do
+      recipe = EdamamApiWrapper.get_recipe("http://www.edamam.com/ontologies/edamam.owl%23recipe_65adeae2e0b552568de6250bd9f29b81")
+
+      assert recipe[0].is_a? Hash
+    end
+  end
+
+  #Not sure how to test this because the response is just one bracket
+  test 'a recipe cannot be retrieved from Edamam with a bad uri' do
+    VCR.use_cassette("bad recipe") do
+      recipe = EdamamApiWrapper.get_recipe("bad uri")
+
+      assert_equal recipe.body, "["
     end
   end
 

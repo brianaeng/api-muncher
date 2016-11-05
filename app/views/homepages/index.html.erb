@@ -5,30 +5,30 @@ Make a request to the API using the search term
 Display the results in a list to the user -->
 
 <article class="center-this">
-  <h1>Search For A Recipe!</h1>
+  <h1>Search Recipes</h1>
 
   <section class="search-form">
-    <!-- change to temp_path if testing params output -->
     <%= form_tag results_path(1), method: :get do %>
       <%= text_field_tag :search_term, nil, placeholder: "Enter search term(s)" %>
 
-        <% @health_options.each do |option| %>
-              <p>
-                <%= label_tag option %>
-                <%= check_box_tag 'health_terms[]', option %>
+        <!-- Commenting this out since options with dashes aren't working correctly -->
+        <%# @health_options.each do |option| %>
+              <!-- <p>
+                <%# label_tag option %>
+                <%# check_box_tag 'health_terms[]', option %>
               </p>
-        <% end %>
+        <%# end %> -->
 
-      <%= submit_tag "Search!", class: "button" %>
+      <%= submit_tag "Search", class: "button" %>
     <% end %>
   </section>
 
-  <!-- <section class="past-searches">
-    <%# if !session[:searches].empty? && session[:searches] != nil %>
+  <section class="past-searches">
+    <% if !session[:searches].empty? %>
       <h3>Recent Searches</h3>
-      <%# session[:searches][-6..-1].reverse.each do |search| %>
-        <p><%# link_to search, results_path(1, search_term: search) %></p>
-      <%# end %>
-    <%# end %>
-  </section> -->
+      <% @searches.each do |search| %>
+        <p><%= link_to search, results_path(1, search_term: search) %></p>
+      <% end %>
+    <% end %>
+  </section>
 </article>
