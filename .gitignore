@@ -18,4 +18,4 @@
 .env
 .DS_Store
 
-/cassettes
+test/cassettes/*
