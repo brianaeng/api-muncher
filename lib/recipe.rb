@@ -6,7 +6,7 @@ class Recipe
     @uri = uri
     @name = name
     @link = link
-    @picture_url = picture_url
+    @image = image
     @ingredients = ingredients
     @dietary_info = dietary_info
 
