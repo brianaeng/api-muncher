@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.edamam.com/search?app_id=f2d0de05&app_key=0494f4824cf7b0dea508fbfe6e60e36e&from=0&q=sdbfsdnfjksnjfsd&to=10
+    uri: https://api.edamam.com/search?app_id=ID&app_key=KEY&from=0&q=sdbfsdnfjksnjfsd&to=10
     body:
       encoding: US-ASCII
       string: ''
@@ -58,7 +58,7 @@ http_interactions:
           "count" : 0,
           "hits" : [ ]
         }
-    http_version: 
+    http_version:
   recorded_at: Wed, 02 Nov 2016 22:12:23 GMT
 - request:
     method: get
@@ -118,6 +118,6 @@ http_interactions:
           "count" : 0,
           "hits" : [ ]
         }
-    http_version: 
+    http_version:
   recorded_at: Fri, 04 Nov 2016 16:51:14 GMT
 recorded_with: VCR 3.0.3

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.edamam.com/search?app_id=f2d0de05&app_key=0494f4824cf7b0dea508fbfe6e60e36e&from=0&q=tomato&to=10
+    uri: https://api.edamam.com/search?app_id=ID&app_key=KEY&from=0&q=tomato&to=10
     body:
       encoding: US-ASCII
       string: ''
@@ -3382,7 +3382,7 @@ http_interactions:
         MjgwMTQ3NDk5OSwKICAgICAgICAidW5pdCIgOiAiwrVnIgogICAgICB9IF0K
         ICAgIH0sCiAgICAiYm9va21hcmtlZCIgOiBmYWxzZSwKICAgICJib3VnaHQi
         IDogZmFsc2UKICB9IF0KfQ==
-    http_version: 
+    http_version:
   recorded_at: Wed, 02 Nov 2016 19:52:38 GMT
 - request:
     method: get
@@ -3564,7 +3564,7 @@ http_interactions:
         for iOS</a></li>\n\t\t\t\t\t\t<li class=\"android\"><a target=\"_blank\" href=\"http://play.google.com/store/apps/details?id=com.edamam.recipesearch\">Edamam
         for Android</a></li>\n\t\t\t\t\t</ul>\n\t\t\t\t</div><!-- /footer-apps -->\n\t\t\t</div><!--
         /group-2 -->\n\t\t</footer>\n\t</div><!-- /general -->\n</body>\n\n</html>"
-    http_version: 
+    http_version:
   recorded_at: Wed, 02 Nov 2016 20:08:44 GMT
 - request:
     method: get
@@ -34658,6 +34658,6 @@ http_interactions:
         OTI1LAogICAgICAgICJ1bml0IiA6ICLCtWciCiAgICAgIH0gXQogICAgfSwK
         ICAgICJib29rbWFya2VkIiA6IGZhbHNlLAogICAgImJvdWdodCIgOiBmYWxz
         ZQogIH0gXQp9
-    http_version: 
+    http_version:
   recorded_at: Fri, 04 Nov 2016 16:51:13 GMT
 recorded_with: VCR 3.0.3

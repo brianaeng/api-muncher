@@ -19,6 +19,7 @@ class EdamamApiWrapperTest < ActionController::TestCase
       ten_recipes = EdamamApiWrapper.find_recipes("tomato", nil, 0, 10)
 
       assert_equal ten_recipes.length, 10
+      assert ten_recipes[0].is_a? Recipe
     end
   end
 

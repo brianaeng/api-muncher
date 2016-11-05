@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.edamam.com/search?app_id=f2d0de05&app_key=0494f4824cf7b0dea508fbfe6e60e36e&r=http://www.edamam.com/ontologies/edamam.owl%23recipe_65adeae2e0b552568de6250bd9f29b81
+    uri: https://api.edamam.com/search?app_id=ID&app_key=KEY&r=http://www.edamam.com/ontologies/edamam.owl%23recipe_65adeae2e0b552568de6250bd9f29b81
     body:
       encoding: US-ASCII
       string: ''
@@ -306,6 +306,6 @@ http_interactions:
         LAogICAgInNjaGVtYU9yZ1RhZyIgOiBudWxsLAogICAgInRvdGFsIiA6IDc4
         LjM4Nzc1LAogICAgImhhc1JESSIgOiB0cnVlLAogICAgImRhaWx5IiA6IDk3
         Ljk4NDY4NzQ5OTk5OTk5LAogICAgInVuaXQiIDogIsK1ZyIKICB9IF0KfV0=
-    http_version: 
+    http_version:
   recorded_at: Fri, 04 Nov 2016 21:04:39 GMT
 recorded_with: VCR 3.0.3
