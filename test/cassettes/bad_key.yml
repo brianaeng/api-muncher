@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.edamam.com/search?app_id=id&app_key=234234&from=0&q=tomato&to=10
+    uri: https://api.edamam.com/search?app_id=<APP_ID>&app_key=234234&from=0&q=tomato&to=10
     body:
       encoding: US-ASCII
       string: ''
@@ -21,7 +21,7 @@ http_interactions:
       Server:
       - ngx_openresty
       Date:
-      - Sun, 06 Nov 2016 05:06:30 GMT
+      - Sun, 06 Nov 2016 08:00:29 GMT
       Content-Type:
       - text/html
       Content-Length:
@@ -180,6 +180,6 @@ http_interactions:
         for iOS</a></li>\n\t\t\t\t\t\t<li class=\"android\"><a target=\"_blank\" href=\"http://play.google.com/store/apps/details?id=com.edamam.recipesearch\">Edamam
         for Android</a></li>\n\t\t\t\t\t</ul>\n\t\t\t\t</div><!-- /footer-apps -->\n\t\t\t</div><!--
         /group-2 -->\n\t\t</footer>\n\t</div><!-- /general -->\n</body>\n\n</html>"
-    http_version:
-  recorded_at: Sun, 06 Nov 2016 05:06:30 GMT
+    http_version: 
+  recorded_at: Sun, 06 Nov 2016 08:00:29 GMT
 recorded_with: VCR 3.0.3

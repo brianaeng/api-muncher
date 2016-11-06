@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.edamam.com/search?app_id=id&app_key=key&from=0&q=sdbfsdnfjksnjfsd&to=10
+    uri: https://api.edamam.com/search?app_id=<APP_ID>&app_key=<APP_KEY>&from=0&q=sdbfsdnfjksnjfsd&to=10
     body:
       encoding: US-ASCII
       string: ''
@@ -21,7 +21,7 @@ http_interactions:
       Server:
       - ngx_openresty
       Date:
-      - Sun, 06 Nov 2016 05:06:30 GMT
+      - Sun, 06 Nov 2016 08:00:29 GMT
       Content-Type:
       - application/json;charset=UTF-8
       Transfer-Encoding:
@@ -35,8 +35,8 @@ http_interactions:
       X-Served-By:
       - ip-10-150-1-224/10.150.1.224
       Set-Cookie:
-      - JSESSIONID=D10B1AD7A05467F972386AE77915717A; Path=/
-      - JSESSIONID=D10B1AD7A05467F972386AE77915717A; Path=/; Secure; HttpOnly
+      - JSESSIONID=5CCAB3551A218D8A6649AB519081B63E; Path=/
+      - JSESSIONID=5CCAB3551A218D8A6649AB519081B63E; Path=/; Secure; HttpOnly
       Vary:
       - Accept-Encoding
     body:
@@ -50,14 +50,14 @@ http_interactions:
             "sane" : [ ],
             "to" : [ "10" ],
             "q" : [ "sdbfsdnfjksnjfsd" ],
-            "app_id" : [ "f2d0de05" ],
-            "app_key" : [ "ff460db78ae3f7a1178b2e6be2c7a2a8" ],
+            "app_id" : [ "<APP_ID>" ],
+            "app_key" : [ "<APP_KEY>" ],
             "from" : [ "0" ]
           },
           "more" : false,
           "count" : 0,
           "hits" : [ ]
         }
-    http_version:
-  recorded_at: Sun, 06 Nov 2016 05:06:31 GMT
+    http_version: 
+  recorded_at: Sun, 06 Nov 2016 08:00:29 GMT
 recorded_with: VCR 3.0.3
