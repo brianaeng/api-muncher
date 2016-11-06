@@ -6,14 +6,14 @@ class EdamamApiWrapper
   BASE_URL = "https://api.edamam.com/search"
   MAX_NUM_RESULTS = 100
 
-  def self.find_recipes(search_term, health_terms = nil, from = 0, to = MAX_NUM_RESULTS, id = nil, key = nil)
+  def self.find_recipes(search_term, health_terms = nil, diet_terms = nil, from = 0, to = MAX_NUM_RESULTS, id = nil, key = nil)
     id = ID if id == nil
     key = KEY if key == nil
 
-    #Compiled URL with constants and given search term
-    if health_terms == nil
+    #Compiled URL based on arguments given
+    if health_terms == nil && diet_terms == nil
       url = BASE_URL + "?q=#{search_term}" + "&app_id=#{id}&app_key=#{key}" + "&from=#{from}&to=#{to}"
-    else
+    elsif health_terms != nil && diet_terms == nil
       health = ""
 
       health_terms.each do |term|
@@ -21,6 +21,28 @@ class EdamamApiWrapper
       end
 
       url = BASE_URL + "?q=#{search_term}" + health + "&app_id=#{id}&app_key=#{key}" + "&from=#{from}&to=#{to}"
+    elsif health_terms == nil && diet_terms != nil
+      diet = ""
+
+      diet_terms.each do |term|
+        diet += "&diet=#{term}"
+      end
+
+      url = BASE_URL + "?q=#{search_term}" + diet + "&app_id=#{id}&app_key=#{key}" + "&from=#{from}&to=#{to}"
+    elsif health_terms != nil && diet_terms != nil
+      health = ""
+
+      health_terms.each do |term|
+        health += "&health=#{term}"
+      end
+
+      diet = ""
+
+      diet_terms.each do |term|
+        diet += "&diet=#{term}"
+      end
+
+      url = BASE_URL + "?q=#{search_term}" + health + diet + "&app_id=#{id}&app_key=#{key}" + "&from=#{from}&to=#{to}"
     end
 
     #Using HTTParty to get URL response
@@ -34,7 +56,7 @@ class EdamamApiWrapper
       #Will return recipe instances
       if response["count"] > 0
         response["hits"].each do |recipe|
-          recipe_instance = Recipe.new(recipe["recipe"]["uri"], recipe["recipe"]["label"], recipe["recipe"]["url"], recipe["recipe"]["image"], recipe["recipe"]["ingredients"], recipe["recipe"]["healthLabels"])
+          recipe_instance = Recipe.new(recipe["recipe"]["uri"], recipe["recipe"]["label"], recipe["recipe"]["url"], recipe["recipe"]["image"], recipe["recipe"]["ingredients"], recipe["recipe"]["healthLabels"], recipe["recipe"]["dietLabels"])
 
           recipes.push(recipe_instance)
         end

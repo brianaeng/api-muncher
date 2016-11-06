@@ -73,7 +73,7 @@ footer {
   padding: 1em;
 }
 
-a {
+a, a:visited  {
   color: rgb(80, 80, 80);
   font-size: 1.25rem;
 }
@@ -107,7 +107,7 @@ h1 {
   margin: 3rem;
 }
 
-.button, .button:hover {
+.button, .button:hover, .button:visited {
   background-color: rgb(71, 173, 58);
   font-size: 1.1rem;
 }
