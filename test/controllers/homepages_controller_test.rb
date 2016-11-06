@@ -14,10 +14,18 @@ class HomepagesControllerTest < ActionController::TestCase
     end
   end
 
-  test "should get search results" do
+  test "should get first page of search results" do
     VCR.use_cassette("show search results") do
 
       get :search_results, {search_term: "chicken", page_num: 1}
+      assert_response :success
+    end
+  end
+
+  test "should get non-first page of search results" do
+    VCR.use_cassette("show more search results") do
+
+      get :search_results, {search_term: "chicken", page_num: 2}
       assert_response :success
     end
   end
