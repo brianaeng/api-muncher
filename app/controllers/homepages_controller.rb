@@ -12,7 +12,7 @@ class HomepagesController < ApplicationController
     session[:searches].delete("")
 
     if session[:searches].length > 4
-      @searches = session[:searches][-5..-1].reverse
+      @searches = session[:searches][-3..-1].reverse
     else
       @searches = session[:searches].reverse
     end
