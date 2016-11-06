@@ -17,5 +17,3 @@
 /tmp
 .env
 .DS_Store
-
-test/cassettes/*

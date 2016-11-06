@@ -19,5 +19,13 @@ class ActiveSupport::TestCase
       :record => :new_episodes,    # record new data when we don't have it yet
       :match_requests_on => [:method, :uri, :body] # The http method, URI and body of a request all need to match (or else it will record something new)
     }
+
+    config.filter_sensitive_data("<APP_ID>") do
+      ENV['APP_ID']
+    end
+
+    config.filter_sensitive_data("<APP_KEY>") do
+      ENV['APP_KEY']
+    end
   end
 end
