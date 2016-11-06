@@ -4,14 +4,15 @@ require "#{Rails.root}/lib/recipe.rb"
 class HomepagesController < ApplicationController
 
   def index
-    @health_options = ["Vegan", "Vegetarian", "Paleo", "Dairy-Free", "Gluten-Free", "Wheat-Free", "Fat-Free", "Low-Sugar", "Egg-Free", "Peanut-Free", "Tree-Nut-Free", "Soy-Free", "Fish-Free", "Shellfish-Free"]
+    @health_options = ["vegan", "vegetarian", "peanut-free", "tree-nut-free"]
+    @diet_options = ["balanced", "high-protein", "low-fat", "low-carb"]
 
     session[:searches] ||= []
 
     session[:searches].delete("")
 
     if session[:searches].length > 4
-      @searches = session[:searches][-5..-1].reverse
+      @searches = session[:searches][-3..-1].reverse
     else
       @searches = session[:searches].reverse
     end
@@ -21,7 +22,7 @@ class HomepagesController < ApplicationController
     if params[:num_pages] != nil
       @num_pages = params[:num_pages].to_i
     else
-      @total_results = EdamamApiWrapper.find_recipes(params[:search_term], params["health_terms"])
+      @total_results = EdamamApiWrapper.find_recipes(params[:search_term], params["health_terms"], params["diet_terms"])
 
       @num_pages = @total_results.length/10
     end
@@ -29,7 +30,7 @@ class HomepagesController < ApplicationController
     @from_value = (params[:page_num].to_i * 10) - 10
     @to_value = params[:page_num].to_i * 10
 
-    @results = EdamamApiWrapper.find_recipes(params[:search_term], params["health_terms"], @from_value, @to_value)
+    @results = EdamamApiWrapper.find_recipes(params[:search_term], params["health_terms"], params["diet_terms"], @from_value, @to_value)
 
     if session[:searches]
       session[:searches].push(params[:search_term])
@@ -43,8 +44,7 @@ class HomepagesController < ApplicationController
 
     response = EdamamApiWrapper.get_recipe(recipe_uri)
 
-    @recipe = Recipe.new(response[0]["uri"], response[0]["label"], response[0]["url"], response[0]["image"], response[0]["ingredients"], response[0]["healthLabels"])
-
+    @recipe = Recipe.new(response[0]["uri"], response[0]["label"], response[0]["url"], response[0]["image"], response[0]["ingredients"], response[0]["healthLabels"], response[0]["dietLabels"])
   end
 
 end

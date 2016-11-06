@@ -41,14 +41,29 @@ h3, h5 {
 }
 
 header nav {
-  text-align: center;
   border-bottom: 1px rgb(185, 185, 185) solid;
-  height: 6rem;
   margin-bottom: 1rem;
 }
 
-header nav a {
+.home {
+  text-align: center;
+  margin: 0 auto;
+  width: 25%;
+  padding-bottom: .1rem;
+  padding-top: .25rem;
+}
+
+.home a {
   font-size: 5rem;
+}
+
+.auth {
+  float: right;
+  clear: both;
+}
+
+.auth a {
+  margin: .25rem;
 }
 
 footer {
@@ -58,12 +73,12 @@ footer {
   padding: 1em;
 }
 
-a {
+a, a:visited  {
   color: rgb(80, 80, 80);
   font-size: 1.25rem;
 }
 
-a:hover:not(.home) {
+a:hover:not(.logo) {
   color: rgb(80, 80, 80);
   opacity: .7;
 }
@@ -92,9 +107,23 @@ h1 {
   margin: 3rem;
 }
 
-.button, .button:hover {
+.button, .button:hover, .button:visited {
   background-color: rgb(71, 173, 58);
   font-size: 1.1rem;
+}
+
+.recipe-label {
+  display: inline-block;
+  padding: .25rem;
+}
+
+.check-boxes {
+  clear: both;
+}
+
+/*-- PROFILE --*/
+.profile-page {
+  margin: 0 auto;
 }
 
 /*-- SEARCH RESULTS --*/

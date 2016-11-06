@@ -16,7 +16,18 @@
     <div class="content">
     <header>
       <nav>
-        <%= link_to "🍽", root_path, class: "home" %>
+        <div class="auth">
+          <% if session[:user_id] != nil %>
+            <%= link_to "Profile", user_path %>
+            <%= link_to "Logout", logout_path %>
+          <% else %>
+            <%= link_to "Login", "/auth/google_oauth2" %>
+          <% end %>
+        </div>
+
+        <div class="home">
+          <%= link_to "🍽", root_path, class: "logo" %>
+        </div>
       </nav>
     </header>
 

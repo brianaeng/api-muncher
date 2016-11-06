@@ -11,13 +11,21 @@ Display the results in a list to the user -->
     <%= form_tag results_path(1), method: :get do %>
       <%= text_field_tag :search_term, nil, placeholder: "Enter search term(s)" %>
 
-        <!-- Commenting this out since options with dashes aren't working correctly -->
-        <%# @health_options.each do |option| %>
-              <!-- <p>
-                <%# label_tag option %>
-                <%# check_box_tag 'health_terms[]', option %>
-              </p>
-        <%# end %> -->
+      <section class="check-boxes">
+        <% @health_options.each do |option| %>
+          <p class="recipe-label">
+            <%= label_tag option %>
+            <%= check_box_tag 'health_terms[]', option %>
+          </p>
+        <% end %>
+
+        <% @diet_options.each do |option| %>
+          <p class="recipe-label">
+            <%= label_tag option %>
+            <%= check_box_tag 'diet_terms[]', option %>
+          </p>
+        <% end %>
+      </section>
 
       <%= submit_tag "Search", class: "button" %>
     <% end %>
