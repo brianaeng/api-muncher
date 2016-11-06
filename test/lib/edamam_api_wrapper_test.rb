@@ -16,7 +16,7 @@ class EdamamApiWrapperTest < ActionController::TestCase
 
   test 'a group of 10 results can be retrieved from Edamam' do
     VCR.use_cassette("ten recipes") do
-      ten_recipes = EdamamApiWrapper.find_recipes("tomato", nil, 0, 10)
+      ten_recipes = EdamamApiWrapper.find_recipes("tomato", nil, nil, 0, 10)
 
       assert_equal ten_recipes.length, 10
       assert ten_recipes[0].is_a? Recipe
@@ -25,7 +25,7 @@ class EdamamApiWrapperTest < ActionController::TestCase
 
   test 'a search with no results from Edamam is empty' do
     VCR.use_cassette("empty results") do
-      no_recipes = EdamamApiWrapper.find_recipes("sdbfsdnfjksnjfsd", nil, 0, 10)
+      no_recipes = EdamamApiWrapper.find_recipes("sdbfsdnfjksnjfsd", nil, nil, 0, 10)
 
       assert_equal no_recipes, []
     end
@@ -33,7 +33,7 @@ class EdamamApiWrapperTest < ActionController::TestCase
 
   test 'results cannot be retrieved from Edamam with a bad id' do
     VCR.use_cassette("bad id") do
-      response = EdamamApiWrapper.find_recipes("tomato", nil, 0, 10, 234234, nil)
+      response = EdamamApiWrapper.find_recipes("tomato", nil, nil, 0, 10, 234234, nil)
       assert_equal response.code, 401
       # assert response.parsed_response.include? ("Error 401")
     end
@@ -41,7 +41,7 @@ class EdamamApiWrapperTest < ActionController::TestCase
 
   test 'results cannot be retrieved from Edaman with a bad key' do
     VCR.use_cassette("bad key") do
-      response = EdamamApiWrapper.find_recipes("tomato", nil, 0, 10, nil, 234234)
+      response = EdamamApiWrapper.find_recipes("tomato", nil, nil, 0, 10, nil, 234234)
       assert_equal response.code, 401
       # assert response.parsed_response.include? ("Error 401")
     end

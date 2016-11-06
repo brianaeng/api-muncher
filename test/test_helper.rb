@@ -21,11 +21,11 @@ class ActiveSupport::TestCase
     }
 
     config.filter_sensitive_data("<APP_ID>") do
-      ENV['APP_ID']
+      ENV["APP_ID"]
     end
 
     config.filter_sensitive_data("<APP_KEY>") do
-      ENV['APP_KEY']
+      ENV["APP_KEY"]
     end
   end
 end

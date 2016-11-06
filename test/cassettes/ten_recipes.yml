@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.edamam.com/search?app_id=f2d0de05&app_key=ff460db78ae3f7a1178b2e6be2c7a2a8&from=0&q=tomato&to=10
+    uri: https://api.edamam.com/search?app_id=f2d0de05&app_key=key&from=0&q=tomato&to=10
     body:
       encoding: US-ASCII
       string: ''
@@ -3382,6 +3382,6 @@ http_interactions:
         MjgwMTQ3NDk5OSwKICAgICAgICAidW5pdCIgOiAiwrVnIgogICAgICB9IF0K
         ICAgIH0sCiAgICAiYm9va21hcmtlZCIgOiBmYWxzZSwKICAgICJib3VnaHQi
         IDogZmFsc2UKICB9IF0KfQ==
-    http_version: 
+    http_version:
   recorded_at: Sun, 06 Nov 2016 05:06:32 GMT
 recorded_with: VCR 3.0.3
