@@ -112,6 +112,11 @@ h1 {
   font-size: 1.1rem;
 }
 
+/*-- PROFILE --*/
+.profile-page {
+  margin: 0 auto;
+}
+
 /*-- SEARCH RESULTS --*/
 .results {
   width: 70%;
