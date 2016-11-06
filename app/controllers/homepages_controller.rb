@@ -4,7 +4,7 @@ require "#{Rails.root}/lib/recipe.rb"
 class HomepagesController < ApplicationController
 
   def index
-    @health_options = ["vegan", "vegetarian", "sugar-conscious", "peanut-free", "tree-nut-free", "alcohol-free"]
+    @health_options = ["vegan", "vegetarian", "peanut-free", "tree-nut-free"]
     @diet_options = ["balanced", "high-protein", "low-fat", "low-carb"]
 
     session[:searches] ||= []
