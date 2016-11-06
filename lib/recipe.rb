@@ -11,6 +11,7 @@ class Recipe
     @health_info = health_info
     @diet_info = diet_info
 
+    #Checks to see if any info is blank
     if ([uri, name, link, image, ingredients, health_info, diet_info].include? nil) || ([uri, name, link, image, ingredients, health_info, diet_info].include? "")
       raise ArgumentError
     end
