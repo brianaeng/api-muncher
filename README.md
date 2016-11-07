@@ -1,5 +1,5 @@
 # Reflection
-**What do you understand better after doing this project?**  
+**What do you understand better after doing this project?**  
 APIs in general seem less like this big unknown to me now. I understand how to dig into API docs to see how they work/troubleshoot them (since they each have their own quirks) and pull/manipulate data via APIs. Looking at JSON data also doesn't seem daunting anymore, I know I can go in and figure out what how to target the data I want. Still getting used to Foundation, but I feel like I understand it a little bit more now.
 
 **What do you want more practice with?**  
