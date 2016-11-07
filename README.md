@@ -1,3 +1,13 @@
+# Reflection
+**What do you understand better after doing this project?**  
+APIs in general seem less like this big unknown to me now. I understand how to dig into API docs to see how they work/troubleshoot them (since they each have their own quirks) and pull/manipulate data via APIs. Looking at JSON data also doesn't seem daunting anymore, I know I can go in and figure out what how to target the data I want. Still getting used to Foundation, but I feel like I understand it a little bit more now.
+
+**What do you want more practice with?**  
+I still feel like my front end skills are at the same level, I wish I would've pushed myself a bit more there. I always go for simple and clean, but I think even if that's my approach there are always new things to try. Also, I definitely feel like I need more practice testing.
+
+**What is something you saw done differently?**  
+One person in my chair trio got all the way through implementing the favorites feature, which was cool because I had implemented login but only thought at the design level for adding favorites so it was cool to see how she actually got it working. I dug both designs that my chair trio did - they pushed for more of a visual experience (images, formatting) that helps me think of what I can try in the future.
+
 # Recipe API Consumer
 
 ## Learning Goals:
