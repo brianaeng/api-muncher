@@ -36,7 +36,7 @@ class EdamamApiWrapper
     end
 
     #Add other data to end after optional parameters compiled
-    url += + "&app_id=#{id}&app_key=#{key}" + "&from=#{from}&to=#{to}"
+    url += "&app_id=#{id}&app_key=#{key}" + "&from=#{from}&to=#{to}"
 
     #Using HTTParty to get URL response
     response = HTTParty.get(url)
