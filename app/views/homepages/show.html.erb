@@ -25,15 +25,19 @@ Dietary information -->
   </ul>
 
   <h5>Dietary Information:</h5>
+  <% if @recipe.health_info != [] %>
   <p>Health label(s):
-    <% @recipe.health_info.each do |info_item| %>
-      <% if info_item != @recipe.health_info[-1] %>
-        <%= "#{info_item}, " %>
-      <% else %>
-        <%= "#{info_item}" %>
+      <% @recipe.health_info.each do |info_item| %>
+        <% if info_item != @recipe.health_info[-1] %>
+          <%= "#{info_item}, " %>
+        <% else %>
+          <%= "#{info_item}" %>
+        <% end %>
       <% end %>
-    <% end %>
   </p>
+  <% end %>
+
+  <% if @recipe.diet_info != [] %>
   <p>Diet label(s):
     <% @recipe.diet_info.each do |info_item| %>
       <% if info_item != @recipe.diet_info[-1] %>
@@ -43,4 +47,5 @@ Dietary information -->
       <% end %>
     <% end %>
   </p>
+  <% end %>
 </section>

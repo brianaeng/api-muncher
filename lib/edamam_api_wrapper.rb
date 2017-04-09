@@ -11,48 +11,32 @@ class EdamamApiWrapper
     id = ID if id == nil
     key = KEY if key == nil
 
-    #Compiled URL based on arguments given
+    #URL to be compiled based on arguments given
+    url = BASE_URL + "?q=#{search_term}"
 
-    #No health terms or diet terms given
-    if health_terms == nil && diet_terms == nil
-      url = BASE_URL + "?q=#{search_term}" + "&app_id=#{id}&app_key=#{key}" + "&from=#{from}&to=#{to}"
-
-    #Health terms given but no diet terms given
-    elsif health_terms != nil && diet_terms == nil
+    #If health terms given, add them to URL
+    if health_terms != nil
       health = ""
 
       health_terms.each do |term|
         health += "&health=#{term}"
       end
 
-      url = BASE_URL + "?q=#{search_term}" + health + "&app_id=#{id}&app_key=#{key}" + "&from=#{from}&to=#{to}"
+      url += health
 
-    #No health terms given but diet terms given
-    elsif health_terms == nil && diet_terms != nil
+    #If diet terms given, add them to URL
+    elsif diet_terms != nil
       diet = ""
 
       diet_terms.each do |term|
         diet += "&diet=#{term}"
       end
 
-      url = BASE_URL + "?q=#{search_term}" + diet + "&app_id=#{id}&app_key=#{key}" + "&from=#{from}&to=#{to}"
-
-    #Health terms and diet terms given
-    elsif health_terms != nil && diet_terms != nil
-      health = ""
-
-      health_terms.each do |term|
-        health += "&health=#{term}"
-      end
-
-      diet = ""
-
-      diet_terms.each do |term|
-        diet += "&diet=#{term}"
-      end
-
-      url = BASE_URL + "?q=#{search_term}" + health + diet + "&app_id=#{id}&app_key=#{key}" + "&from=#{from}&to=#{to}"
+      url += diet
     end
+
+    #Add other data to end after optional parameters compiled
+    url += + "&app_id=#{id}&app_key=#{key}" + "&from=#{from}&to=#{to}"
 
     #Using HTTParty to get URL response
     response = HTTParty.get(url)
